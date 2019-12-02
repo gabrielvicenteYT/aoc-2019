@@ -8,10 +8,12 @@ def execute(noun, verb):
     memory[1] = noun
     memory[2] = verb
     while True:
-        op, in1, in2, out = memory[pc:pc + 4]
+        op = memory[pc]
         if op == 1:
+            in1, in2, out = memory[pc + 1:pc + 4]
             memory[out] = memory[in1] + memory[in2]
         elif op == 2:
+            in1, in2, out = memory[pc + 1:pc + 4]
             memory[out] = memory[in1] * memory[in2]
         elif op == 99:
             return memory[0]
