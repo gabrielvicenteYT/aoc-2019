@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := build/day01
 
 build/%.o: %.asm
-	mkdir build
+	mkdir -p build
 	nasm -f elf64 $< -o $@
 
 run: build/day01
