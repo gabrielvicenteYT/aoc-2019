@@ -1,2 +1,4 @@
 **/.idea/
-**/build/
+x64/*
+!x64/*.asm
+!x64/Makefile
