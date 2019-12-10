@@ -39,7 +39,8 @@ class Memory:
         if index >= len(self.data):
             self.data.extend([0] * (index - len(self.data)))
             self.data.append(value)
-        self.data[index] = value
+        else:
+            self.data[index] = value
 
 
 class Interpreter:
