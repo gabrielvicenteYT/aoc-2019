@@ -1,4 +1,4 @@
-from collections import defaultdict
+from array import array
 from enum import Enum
 
 with open('data.txt') as f:
@@ -28,11 +28,25 @@ class Halt(Exception):
     pass
 
 
+class Memory:
+    def __init__(self, initial):
+        self.data = array('q', initial)
+
+    def __getitem__(self, index):
+        return self.data[index] if index < len(self.data) else 0
+
+    def __setitem__(self, index, value):
+        if index >= len(self.data):
+            self.data.extend([0] * (index - len(self.data)))
+            self.data.append(value)
+        self.data[index] = value
+
+
 class Interpreter:
     def __init__(self, inp):
         self.pc = 0
         self.rel = 0
-        self.memory = defaultdict(int, enumerate(data))
+        self.memory = Memory(data)
         self.input = inp
         self.output = []
 
